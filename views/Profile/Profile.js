@@ -90,7 +90,7 @@ export default class Profile extends React.Component {
                         {this.state.user_data.user_address != '' ? 
                         <View style={{ flexDirection: 'row', marginBottom: 8, }}>
                             <View style={{ flexDirection: 'column', }}>
-                                <Icon name="map-marker-outline" style={{ fontSize: 16, color: "#ff9900", marginTop: 3, }}></Icon>
+                                <Icon name="map-marker-outline" style={{ fontSize: 16, color: "#145B93", marginTop: 3, }}></Icon>
                             </View>
                             <View style={{ flexDirection: 'column', }}>
                                 <Text style={[ styles.text_font, { marginLeft: 8, } ]}>{this.state.user_data.user_address}</Text>
@@ -101,7 +101,7 @@ export default class Profile extends React.Component {
                         {this.state.user_data.user_tel != '' ? 
                         <View style={{ flexDirection: 'row', marginBottom: 8, }}>
                             <View style={{ flexDirection: 'column', }}>
-                                <Icon name="phone" style={{ fontSize: 16, color: "#ff9900", marginTop: 3, }}></Icon>
+                                <Icon name="phone" style={{ fontSize: 16, color: "#145B93", marginTop: 3, }}></Icon>
                             </View>
                             <View style={{ flexDirection: 'column', }}>
                                 <Text style={[ styles.text_font, { marginLeft: 8, } ]}>{this.state.user_data.user_tel}</Text>
@@ -112,7 +112,7 @@ export default class Profile extends React.Component {
                         {this.state.user_data.user_email != '' ? 
                         <View style={{ flexDirection: 'row', marginBottom: 8, }}>
                             <View style={{ flexDirection: 'column', }}>
-                                <Icon name="at" style={{ fontSize: 16, color: "#ff9900", marginTop: 3, }}></Icon>
+                                <Icon name="at" style={{ fontSize: 16, color: "#145B93", marginTop: 3, }}></Icon>
                             </View>
                             <View style={{ flexDirection: 'column', }}>
                                 <Text style={[ styles.text_font, { marginLeft: 8, } ]}>{this.state.user_data.user_email}</Text>
@@ -140,7 +140,7 @@ export default class Profile extends React.Component {
         }
 
         return (
-            <ScrollView style={{ backgroundColor: '#010001', }}>
+            <ScrollView style={{ backgroundColor: '#6FCFCC', }}>
                 {display_data}
             </ScrollView>
         );
@@ -150,7 +150,7 @@ export default class Profile extends React.Component {
 const styles = StyleSheet.create({
 	text_font: {
 		fontSize: 16,
-        color: '#fff',
+        color: '#145B93',
     },
     profile_frame: {
         width: 120, 
