@@ -1,6 +1,7 @@
 import React from 'react';
 import {
     Alert,
+    AsyncStorage,
     Image, 
     StyleSheet, 
     ScrollView,
@@ -35,23 +36,25 @@ export default class Profile extends React.Component {
             loading: true,
             alert: '',
         }, () => { 
-            user_model.getUserByUserCode('U0001').then((response) => {
-                if (response == false) {
-                    this.setState({
-                        loading: false,
-                        alert: 'network-failed',
-                    });
-                }else if (response.data.length == 0) {
-                    this.setState({
-                        loading: false,
-                        alert: 'not-found',
-                    });
-                }else{
-                    this.setState({ 
-                        loading: false,
-                        user_data: response.data[0], 
-                    });
-                }
+            AsyncStorage.getItem('user_data').then((user) => { return JSON.parse(user) }).then((user_data) => {
+                user_model.getUserByUserCode(user_data.user_code).then((response) => {
+                    if (response == false) {
+                        this.setState({
+                            loading: false,
+                            alert: 'network-failed',
+                        });
+                    }else if (response.data.length == 0) {
+                        this.setState({
+                            loading: false,
+                            alert: 'not-found',
+                        });
+                    }else{
+                        this.setState({ 
+                            loading: false,
+                            user_data: response.data[0], 
+                        });
+                    }
+                })
             })
         })
     }
@@ -61,7 +64,9 @@ export default class Profile extends React.Component {
     }
 
     _logOut() {
-
+        AsyncStorage.removeItem('user_data').then(() => {
+            this.props.navigation.navigate('Login')
+        });
     }
 
     render() { 
@@ -90,7 +95,7 @@ export default class Profile extends React.Component {
                         {this.state.user_data.user_address != '' ? 
                         <View style={{ flexDirection: 'row', marginBottom: 8, }}>
                             <View style={{ flexDirection: 'column', }}>
-                                <Icon name="map-marker-outline" style={{ fontSize: 16, color: "#145B93", marginTop: 3, }}></Icon>
+                                <Icon name="map-marker-outline" style={{ fontSize: 16, color: "#ff9900", marginTop: 3, }}></Icon>
                             </View>
                             <View style={{ flexDirection: 'column', }}>
                                 <Text style={[ styles.text_font, { marginLeft: 8, } ]}>{this.state.user_data.user_address}</Text>
@@ -101,7 +106,7 @@ export default class Profile extends React.Component {
                         {this.state.user_data.user_tel != '' ? 
                         <View style={{ flexDirection: 'row', marginBottom: 8, }}>
                             <View style={{ flexDirection: 'column', }}>
-                                <Icon name="phone" style={{ fontSize: 16, color: "#145B93", marginTop: 3, }}></Icon>
+                                <Icon name="phone" style={{ fontSize: 16, color: "#ff9900", marginTop: 3, }}></Icon>
                             </View>
                             <View style={{ flexDirection: 'column', }}>
                                 <Text style={[ styles.text_font, { marginLeft: 8, } ]}>{this.state.user_data.user_tel}</Text>
@@ -112,7 +117,7 @@ export default class Profile extends React.Component {
                         {this.state.user_data.user_email != '' ? 
                         <View style={{ flexDirection: 'row', marginBottom: 8, }}>
                             <View style={{ flexDirection: 'column', }}>
-                                <Icon name="at" style={{ fontSize: 16, color: "#145B93", marginTop: 3, }}></Icon>
+                                <Icon name="at" style={{ fontSize: 16, color: "#ff9900", marginTop: 3, }}></Icon>
                             </View>
                             <View style={{ flexDirection: 'column', }}>
                                 <Text style={[ styles.text_font, { marginLeft: 8, } ]}>{this.state.user_data.user_email}</Text>
@@ -140,7 +145,7 @@ export default class Profile extends React.Component {
         }
 
         return (
-            <ScrollView style={{ backgroundColor: '#6FCFCC', }}>
+            <ScrollView style={{ backgroundColor: '#010001', }}>
                 {display_data}
             </ScrollView>
         );
@@ -150,7 +155,7 @@ export default class Profile extends React.Component {
 const styles = StyleSheet.create({
 	text_font: {
 		fontSize: 16,
-        color: '#145B93',
+        color: '#fff',
     },
     profile_frame: {
         width: 120, 
