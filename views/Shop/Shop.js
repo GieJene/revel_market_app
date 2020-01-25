@@ -98,8 +98,8 @@ export default class Shop extends React.Component {
         } 
 
         return (                
-            <Content style={{ backgroundColor: '#010001', }}>
-                <Header style={{ backgroundColor: '#010001', }}>
+            <Content style={{ backgroundColor: '#534335', }}>
+                <Header style={{ backgroundColor: '#3D3127', }}>
                     <ImageBackground 
                         resizeMode='cover' 
                         source={require('../../images/bghead.png')} 
@@ -109,16 +109,16 @@ export default class Shop extends React.Component {
                     </ImageBackground>
                 </Header>
                 <View style={{ padding: 12, }}>
-                    <View style={[{ height: 48, backgroundColor: '#474648', flexDirection: 'row', borderRadius: 25, elevation: 3, }]}>
+                    <View style={[{ height: 48, backgroundColor: '#FFF', flexDirection: 'row', borderRadius: 25, elevation: 3, }]}>
                         <TextInput style={[ styles.text_font, { flex: 1, paddingLeft: 18, }]}
                             placeholder="What are you looking for ?" 
-                            placeholderTextColor="#979697"
+                            placeholderTextColor="#3D3127"
                             underlineColorAndroid="transparent"
                             onChangeText={(keyword) => { this.setState({ keyword }) }}
                             value={this.state.keyword} 
                         />
                         <TouchableOpacity style={{ width: 50, height: 60, }} onPress={() => { this._fetchData() }}>
-                            <Icon name="magnify" size={28} style={{ color: '#979697', marginTop: 10, }} />
+                            <Icon name="magnify" size={28} style={{ color: '#3D3127', marginTop: 10, }} />
                         </TouchableOpacity>
                     </View>
                 </View>
