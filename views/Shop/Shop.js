@@ -7,6 +7,8 @@ import {
     TextInput,
     TouchableOpacity,
     View,
+    Alert,
+
 } from 'react-native';
 import {
     Header,
@@ -64,6 +66,7 @@ export default class Shop extends React.Component {
 
 
     _onQRCodeScanDone = (qr_code) => {
+        Alert.alert("QR Code ","Qr Code : "+qr_code);
         if (qr_code != '') {
             this.setState({
                 isCameraVisible:false
