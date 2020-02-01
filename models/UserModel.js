@@ -4,7 +4,6 @@ export default class UserModel {
     constructor() {}
 
     async getLogin(username,password) {
-        
         return fetch(GOBALS.URL + 'user/getLogin', {
             method: 'POST',
             headers: {
@@ -45,5 +44,21 @@ export default class UserModel {
         }).catch((error) => {
             return false;
         });
+    }
+
+    async updateImageNameByUserCode(data) {
+        return fetch(GOBALS.URL + 'user/updateImageNameByUserCode', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                return responseJson;
+            }).catch((error) => {
+                console.error(error);
+            });
     }
 }
